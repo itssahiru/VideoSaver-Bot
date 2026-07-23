@@ -2,7 +2,7 @@ import os
 import telebot
 import yt_dlp
 
-TOKEN = "8841336242:AAGapJDJzYiU7AiPqhidiYCLD1EChl0mBnU"
+TOKEN = "8255591402:AAGuST17pDeUjdYIyPXtvgApwfqvXCdTm78"
 bot = telebot.TeleBot(TOKEN)
 
 CHANNEL_USERNAME = "@VideoSaverCommunity"
