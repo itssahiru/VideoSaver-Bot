@@ -3,7 +3,7 @@ import telebot
 import yt_dlp
 
 # आपका Telegram Bot Token
-TOKEN = "8841336242:AAGapJDJzYiU7AiPqhidiYCLD1EChl0mBnU"
+TOKEN = "8430517375:AAHD-kuAKvQgBdfyTOQQQFSq851hZSPezuo"
 bot = telebot.TeleBot(TOKEN)
 
 # नया चैनल यूजरनेम
