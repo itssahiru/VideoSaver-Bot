@@ -2,15 +2,14 @@ import os
 import telebot
 import yt_dlp
 
-# आपका बॉट टोकन
+# आपका Telegram Bot Token
 TOKEN = "8841336242:AAGapJDJzYiU7AiPqhidiYCLD1EChl0mBnU"
 bot = telebot.TeleBot(TOKEN)
 
-# नया अपडेटेड चैनल यूजरनेम
+# नया चैनल यूजरनेम
 CHANNEL_USERNAME = "@VideoSaverHub"
 
 
-# चेक करेगा कि यूजर ने नया चैनल ज्वाइन किया है या नहीं
 def is_user_subscribed(user_id):
   try:
     member = bot.get_chat_member(CHANNEL_USERNAME, user_id)
@@ -21,11 +20,9 @@ def is_user_subscribed(user_id):
   return False
 
 
-# /start कमांड हैंडलर
 @bot.message_handler(commands=["start"])
 def start(message):
   user_id = message.from_user.id
-
   if is_user_subscribed(user_id):
     bot.reply_to(
         message,
@@ -36,13 +33,12 @@ def start(message):
     bot.reply_to(
         message,
         "⚠️ **रुकिए पहले!**\n\nइस बॉट को फ्री में इस्तेमाल करने के लिए हमारे"
-        f" नए ऑफिशियल चैनल को ज्वाइन करना ज़रूरी है:\n👉"
-        f" https://t.me/VideoSaverHub\n\nचैनल ज्वाइन करने के बाद दोबारा"
-        " ** /start ** दबाएं!",
+        f" ऑफिशियल चैनल को ज्वाइन करना ज़रूरी है:\n👉"
+        f" {CHANNEL_USERNAME}\n\nचैनल ज्वाइन करने के बाद दोबारा ** /start **"
+        " दबाएं!",
     )
 
 
-# वीडियो डाउनलोडर हैंडलर
 @bot.message_handler(func=lambda message: True)
 def download_video(message):
   user_id = message.from_user.id
@@ -50,9 +46,8 @@ def download_video(message):
   if not is_user_subscribed(user_id):
     bot.reply_to(
         message,
-        "⚠️ कृपया वीडियो डाउनलोड करने से पहले हमारा नया चैनल ज्वाइन करें:\n👉"
-        f" https://t.me/VideoSaverHub\n\nचैनल ज्वाइन करने के बाद दोबारा लिंक"
-        " भेजें!",
+        "⚠️ कृपया वीडियो डाउनलोड करने से पहले हमारा ऑफिशियल चैनल ज्वाइन करें:\n👉"
+        f" {CHANNEL_USERNAME}\n\nचैनल ज्वाइन करने के बाद दोबारा लिंक भेजें!",
     )
     return
 
